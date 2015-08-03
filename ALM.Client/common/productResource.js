@@ -9,6 +9,6 @@
                     productResource])
 
     function productResource($resource, appSettings) {
-        return $resource(appSettings.serverPath + "/api/products/:id");
+        return $resource(appSettings.serverPath + "/api/products/:search");
     }
 }());

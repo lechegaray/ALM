@@ -9,7 +9,9 @@
     function ProductListCtrl(productResource) {
         var vm = this;
 
-        productResource.query(function (data) {
+        vm.searchCriteria = "GDN";
+
+        productResource.query({search: vm.searchCriteria}, function (data) {
             vm.products = data;
         });
     }
