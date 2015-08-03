@@ -61,3 +61,6 @@ c:\users\user\documents\visual studio 2013\Projects\ALM\ALM.WebAPI\bin\System.We
 c:\users\user\documents\visual studio 2013\Projects\ALM\ALM.WebAPI\obj\Debug\ALM.WebAPI.csprojResolveAssemblyReference.cache
 c:\users\user\documents\visual studio 2013\Projects\ALM\ALM.WebAPI\obj\Debug\ALM.WebAPI.dll
 c:\users\user\documents\visual studio 2013\Projects\ALM\ALM.WebAPI\obj\Debug\ALM.WebAPI.pdb
+c:\users\user\documents\visual studio 2013\Projects\ALM\ALM.WebAPI\bin\System.Web.Cors.dll
+c:\users\user\documents\visual studio 2013\Projects\ALM\ALM.WebAPI\bin\System.Web.Http.Cors.dll
+c:\users\user\documents\visual studio 2013\Projects\ALM\ALM.WebAPI\bin\System.Web.Http.Cors.xml
