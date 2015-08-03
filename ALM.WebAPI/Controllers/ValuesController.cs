@@ -7,7 +7,6 @@ using System.Web.Http;
 
 namespace ALM.WebAPI.Controllers
 {
-    [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
