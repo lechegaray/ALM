@@ -11,8 +11,11 @@
 
         vm.searchCriteria = "GDN";
 
-        productResource.query({search: vm.searchCriteria}, function (data) {
-            vm.products = data;
-        });
+        productResource.query({
+            $filter: "contains(ProductCode, 'GDN') and Price le 20",
+            $orderby: "Price desc"},
+            function (data) {
+                vm.products = data;
+            });
     }
 }());
