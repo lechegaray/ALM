@@ -39,6 +39,8 @@ namespace ALM.WebAPI.Controllers
         //}
 
         // GET: api/Products/5
+        [ResponseType(typeof(Product))]
+        [Authorize()]
         public IHttpActionResult Get(int id)
         {
             try
