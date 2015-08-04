@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
 using System.Web.OData;
 
 namespace ALM.WebAPI.Controllers
@@ -15,33 +16,116 @@ namespace ALM.WebAPI.Controllers
     {
         // GET: api/Products
         [EnableQuery()]
-        public IQueryable<Product> Get()
+        [ResponseType(typeof(Product))]
+        public IHttpActionResult Get()
         {
-            var productRepository = new ProductRepository();
-            return productRepository.Retrieve().AsQueryable();
+            try
+            {
+                var productRepository = new ProductRepository();
+                return Ok(productRepository.Retrieve().AsQueryable());
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
-        public IEnumerable<Product> Get(string search)
-        {
-            var productRepository = new ProductRepository();
-            var products = productRepository.Retrieve();
-            return products.Where(p => p.ProductCode.Contains(search));
-        }
+        // DONT NEED THIS ANYMORE B/C OF ODATA
+        //public IEnumerable<Product> Get(string search)
+        //{
+        //    var productRepository = new ProductRepository();
+        //    var products = productRepository.Retrieve();
+        //    return products.Where(p => p.ProductCode.Contains(search));
+        //}
 
         // GET: api/Products/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                //throw new ArgumentNullException("This is a test");
+                Product product;
+                var productRepository = new ProductRepository();
+
+                if (id > 0)
+                {
+                    var products = productRepository.Retrieve(); //retrieves everything, pretty bad
+                    product = products.FirstOrDefault(p => p.ProductId == id); //LINQ 
+                    if (product == null)
+                    {
+                        return NotFound();
+                    }
+                }
+                else
+                {
+                    product = productRepository.Create();
+                }
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // POST: api/Products
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]Product product)
         {
+            try
+            {
+                if (product == null)
+                {
+                    return BadRequest("Product cannot be null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var productRepository = new Models.ProductRepository();
+                var newProduct = productRepository.Save(product);
+                if (newProduct == null)
+                {
+                    return Conflict();
+                }
+                return Created<Product>(Request.RequestUri + newProduct.ProductId.ToString(), newProduct);
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
         }
 
         // PUT: api/Products/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int id, [FromBody]Product product)
         {
+            try
+            {
+                if (product == null)
+                {
+                    return BadRequest("Product cannot be null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var productRepository = new Models.ProductRepository();
+                var updatedProduct = productRepository.Save(id, product);
+                if (updatedProduct == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
         }
 
         // DELETE: api/Products/5
