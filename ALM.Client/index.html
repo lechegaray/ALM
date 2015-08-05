@@ -1,77 +1,201 @@
 ﻿<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Application Lifecycle Management</title>
-
-    <!-- Style sheets -->
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>ALM</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-<body ng-app="productManagement" ng-controller="MainCtrl as vm">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">Application Lifecycle Management</div>
-                <form ng-hide="vm.isLoggedIn()" class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text"
-                               class="form-control"
-                               placeholder="username (email)"
-                               ng-model="vm.userData.email" />
-                    </div>
-                    <div class="form-group">
-                        <input type="password"
-                               class="form-control"
-                               placeholder="password"
-                               ng-model="vm.userData.password" />
-                    </div>
-                    <button type="submit"
-                            class="btn btn-default"
-                            ng-click="vm.login()">
-                        Login
-                    </button>
-                    <button type="submit"
-                            class = "btn btn-default"
-                            ng-click="vm.registerUser()">
-                        Register
-                    </button>
-                    <div ng-show="vm.message">{{vm.message}}</div>
-                </form>
+                <strong>Email: </strong>infrastructure@devellocus.com
+                &nbsp;&nbsp;
+                <strong>Support: </strong>555-555-5555
+                                    <form ng-hide="vm.isLoggedIn()" class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="username (email)"
+                                   ng-model="vm.userData.email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password"
+                                   class="form-control"
+                                   placeholder="password"
+                                   ng-model="vm.userData.password" />
+                        </div>
+                        <button type="submit"
+                                class="btn btn-default"
+                                ng-click="vm.login()">
+                            Login
+                        </button>
+                        <button type="submit"
+                                class="btn btn-default"
+                                ng-click="vm.registerUser()">
+                            Register
+                        </button>
+                        <div ng-show="vm.message">{{vm.message}}</div>
+                    </form>
             </div>
         </div>
-    </nav>
+    </div>
+</header>
+<!-- HEADER END-->
+<div class="navbar navbar-inverse set-radius-zero">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">
 
-    <div ng-if="vm.isLoggedIn()" class="container">
-        <a ui-sref="home">
-            <button type="button" class="btn btn-default navbar-btn">Home</button>
-        </a>
-        <a ui-sref="productList">
-            <button type="button" class="btn btn-default navbar-btn">Products</button>
-        </a>
+                <img src="/assets/img/devellocus_logo.png" />
+            </a>
 
-        <div ui-view>
+        </div>
+
+
+
+        <div class="left-div">
+            <div class="user-settings-wrapper">
+                <ul class="nav">
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-settings">
+                            <div class="media">
+                                <a class="media-left" href="#">
+
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Jhon Deo Alex </h4>
+                                    <h5>Developer & Designer</h5>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <h5><strong>Personal Bio : </strong></h5>
+                            Anim pariatur cliche reprehen derit.
+                            <hr />
+                            <a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a href="/" class="btn btn-danger btn-sm">Logout</a>
+
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
         </div>
     </div>
+</div>
+<!-- LOGO HEADER END-->
+<section class="menu-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar-collapse collapse ">
+                    <ul id="menu-top" class="nav navbar-nav navbar-right">
+                        <li><a class="menu-top-active" href="/">Dashboard</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                </div>
 
-    <!-- Library Scripts -->
-    <script src="scripts/angular.js"></script>
-    <script src="Scripts/angular-resource.js"></script>
-    <script src="Scripts/angular-ui-router.js"></script>
+                </ul>
+                </head>
+                <body ng-app="productManagement" ng-controller="MainCtrl as vm">
+            </div>
 
-    <!-- Application Script -->
-    <script src="app/app.js"></script>
+        </div>
 
-    <!-- Services -->
-    <script src="common/common.services.js"></script>
-    <script src="common/productResource.js"></script>
-    <script src="common/userAccount.js"></script>
-    <script src="common/currentUser.js"></script>
+</section>
+<!-- MENU SECTION END-->
+<div class="content-wrapper">
+    <!--     <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-    <!-- Product Controllers -->
-    <script src="app/products/productListCtrl.js"></script>
-    <script src="app/products/productEditCtrl.js"></script>
-    <script src="app/mainCtrl.js"></script>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div ng-if="vm.isLoggedIn()" class="container">
+                    <a ui-sref="home">
+                        <button type="button" class="btn btn-default navbar-btn">Home</button>
+                    </a>
+                    <a ui-sref="productList">
+                        <button type="button" class="btn btn-default navbar-btn">Products</button>
+                    </a>
+                    <a ui-sref="stats">
+                        <button type="button" class="btn btn-default navbar-btn">Stats</button>
+                    </a>
+
+                    <div ui-view>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    </div>
+    </div>
+<!-- CONTENT-WRAPPER SECTION END-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                &copy; 2015 Devellocus | By : <a href="http://www.designbootstrap.com/" target="_blank">Apprentices</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<!-- Library Scripts -->
+<script src="scripts/angular.js"></script>
+<script src="Scripts/angular-resource.js"></script>
+<script src="Scripts/angular-ui-router.js"></script>
+
+<!-- Application Script -->
+<script src="app/app.js"></script>
+
+<!-- Services -->
+<script src="common/common.services.js"></script>
+<script src="common/productResource.js"></script>
+<script src="common/userAccount.js"></script>
+<script src="common/currentUser.js"></script>
+
+<!-- Product Controllers -->
+<script src="app/products/productListCtrl.js"></script>
+<script src="app/products/productEditCtrl.js"></script>
+<script src="app/mainCtrl.js"></script>
+
 </body>
-
 </html>
+
