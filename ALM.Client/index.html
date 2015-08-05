@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Acme Product Management</title>
+    <title>Application Lifecycle Management</title>
 
     <!-- Style sheets -->
     <link href="Content/bootstrap.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <div class="navbar-brand">Acme Product Management</div>
+                <div class="navbar-brand">Application Lifecycle Management</div>
                 <form ng-hide="vm.isLoggedIn()" class="navbar-form navbar-right">
                     <div class="form-group">
                         <input type="text"
@@ -42,14 +42,23 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div ng-if="vm.isLoggedIn()"
-             ng-include="'app/products/productEditView.html'"></div>
+    <div ng-if="vm.isLoggedIn()" class="container">
+        <a ui-sref="home">
+            <button type="button" class="btn btn-default navbar-btn">Home</button>
+        </a>
+        <a ui-sref="productList">
+            <button type="button" class="btn btn-default navbar-btn">Products</button>
+        </a>
+
+        <div ui-view>
+        </div>
     </div>
 
     <!-- Library Scripts -->
     <script src="scripts/angular.js"></script>
     <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+
     <!-- Application Script -->
     <script src="app/app.js"></script>
 
